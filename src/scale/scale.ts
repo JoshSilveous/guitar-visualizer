@@ -1,23 +1,44 @@
 export const SCALE_LETTERS_SHARP = [
-    'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G'
+    'G#',
+    'A',
+    'A#',
+    'B',
+    'C',
+    'C#',
+    'D',
+    'D#',
+    'E',
+    'F',
+    'F#',
+    'G',
 ]
 export const SCALE_LETTERS_FLAT = [
-    'A♭', 'A', 'B♭', 'B', 'C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G'
+    'A♭',
+    'A',
+    'B♭',
+    'B',
+    'C',
+    'D♭',
+    'D',
+    'E♭',
+    'E',
+    'F',
+    'G♭',
+    'G',
 ]
 interface Scale_Mode {
-    modeName: string,
+    modeName: string
     modeFormula: number[]
 }
 export const SCALE_MODES: Scale_Mode[] = [
-    { modeName: "Ionian", modeFormula: [2, 2, 1, 2, 2, 2, 1] },
-    { modeName: "Dorian", modeFormula: [2, 1, 2, 2, 2, 1, 2] },
-    { modeName: "Phrygian", modeFormula: [1, 2, 2, 2, 1, 2, 2] },
-    { modeName: "Lydian", modeFormula: [2, 2, 2, 1, 2, 2, 1] },
-    { modeName: "Mixolydian", modeFormula: [2, 2, 1, 2, 2, 1, 2] },
-    { modeName: "Aeolian", modeFormula: [2, 1, 2, 2, 1, 2, 2] },
-    { modeName: "Locrian", modeFormula: [1, 2, 2, 1, 2, 2, 2] },
+    { modeName: 'Ionian', modeFormula: [2, 2, 1, 2, 2, 2, 1] },
+    { modeName: 'Dorian', modeFormula: [2, 1, 2, 2, 2, 1, 2] },
+    { modeName: 'Phrygian', modeFormula: [1, 2, 2, 2, 1, 2, 2] },
+    { modeName: 'Lydian', modeFormula: [2, 2, 2, 1, 2, 2, 1] },
+    { modeName: 'Mixolydian', modeFormula: [2, 2, 1, 2, 2, 1, 2] },
+    { modeName: 'Aeolian', modeFormula: [2, 1, 2, 2, 1, 2, 2] },
+    { modeName: 'Locrian', modeFormula: [1, 2, 2, 1, 2, 2, 2] },
 ]
-
 
 /**
  * Generates a scale.
@@ -33,11 +54,10 @@ export function genScale(note: number, mode: number) {
         throw `input for getScale invalid. mode ${mode} doesn't exist`
     }
 
-    return SCALE_MODES[mode].modeFormula.map(incre => {
+    return SCALE_MODES[mode].modeFormula.map((incre) => {
         note = sanitizeNote(note + incre)
         return sanitizeNote(note - incre)
     })
-
 }
 
 /**
