@@ -29,15 +29,44 @@ export const SCALE_LETTERS_FLAT = [
 interface Scale_Mode {
     modeName: string
     modeFormula: number[]
+    chordPattern: number[]
 }
 export const SCALE_MODES: Scale_Mode[] = [
-    { modeName: 'Ionian', modeFormula: [2, 2, 1, 2, 2, 2, 1] },
-    { modeName: 'Dorian', modeFormula: [2, 1, 2, 2, 2, 1, 2] },
-    { modeName: 'Phrygian', modeFormula: [1, 2, 2, 2, 1, 2, 2] },
-    { modeName: 'Lydian', modeFormula: [2, 2, 2, 1, 2, 2, 1] },
-    { modeName: 'Mixolydian', modeFormula: [2, 2, 1, 2, 2, 1, 2] },
-    { modeName: 'Aeolian', modeFormula: [2, 1, 2, 2, 1, 2, 2] },
-    { modeName: 'Locrian', modeFormula: [1, 2, 2, 1, 2, 2, 2] },
+    {
+        modeName: 'Ionian',
+        modeFormula: [2, 2, 1, 2, 2, 2, 1],
+        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+    },
+    {
+        modeName: 'Dorian',
+        modeFormula: [2, 1, 2, 2, 2, 1, 2],
+        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+    },
+    {
+        modeName: 'Phrygian',
+        modeFormula: [1, 2, 2, 2, 1, 2, 2],
+        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+    },
+    {
+        modeName: 'Lydian',
+        modeFormula: [2, 2, 2, 1, 2, 2, 1],
+        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+    },
+    {
+        modeName: 'Mixolydian',
+        modeFormula: [2, 2, 1, 2, 2, 1, 2],
+        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+    },
+    {
+        modeName: 'Aeolian',
+        modeFormula: [2, 1, 2, 2, 1, 2, 2],
+        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+    },
+    {
+        modeName: 'Locrian',
+        modeFormula: [1, 2, 2, 1, 2, 2, 2],
+        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+    },
 ]
 
 /**
