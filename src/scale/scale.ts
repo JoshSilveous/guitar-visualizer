@@ -1,71 +1,45 @@
-export const SCALE_LETTERS_SHARP = [
-    'G#',
-    'A',
-    'A#',
-    'B',
-    'C',
-    'C#',
-    'D',
-    'D#',
-    'E',
-    'F',
-    'F#',
-    'G',
-]
-export const SCALE_LETTERS_FLAT = [
-    'A♭',
-    'A',
-    'B♭',
-    'B',
-    'C',
-    'D♭',
-    'D',
-    'E♭',
-    'E',
-    'F',
-    'G♭',
-    'G',
-]
+export const SCALE_LETTERS_SHARP = ['G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G']
+export const SCALE_LETTERS_FLAT = ['A♭', 'A', 'B♭', 'B', 'C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G']
 interface Scale_Mode {
     modeName: string
     modeFormula: number[]
-    chordPattern: number[]
+    chordPattern: ChordType[]
 }
 export const SCALE_MODES: Scale_Mode[] = [
     {
-        modeName: 'Ionian',
+        modeName: 'Major (Ionian)',
         modeFormula: [2, 2, 1, 2, 2, 2, 1],
-        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+        chordPattern: ['Major', 'Minor', 'Minor', 'Major', 'Major', 'Minor', 'Diminished'],
     },
     {
         modeName: 'Dorian',
         modeFormula: [2, 1, 2, 2, 2, 1, 2],
-        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+        chordPattern: ['Minor', 'Minor', 'Major', 'Major', 'Minor', 'Diminished', 'Major'],
     },
     {
         modeName: 'Phrygian',
         modeFormula: [1, 2, 2, 2, 1, 2, 2],
-        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+        chordPattern: ['Minor', 'Major', 'Major', 'Minor', 'Diminished', 'Major', 'Minor'],
     },
     {
         modeName: 'Lydian',
         modeFormula: [2, 2, 2, 1, 2, 2, 1],
-        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+        chordPattern: ['Major', 'Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor'],
     },
     {
         modeName: 'Mixolydian',
         modeFormula: [2, 2, 1, 2, 2, 1, 2],
-        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+        chordPattern: ['Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major'],
     },
     {
-        modeName: 'Aeolian',
+        modeName: 'Minor (Aeolian)',
         modeFormula: [2, 1, 2, 2, 1, 2, 2],
-        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+        chordPattern: ['Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major', 'Major'],
     },
     {
         modeName: 'Locrian',
         modeFormula: [1, 2, 2, 1, 2, 2, 2],
-        chordPattern: [0, 1, 1, 0, 1, 1, 2],
+        chordPattern: ['Diminished', 'Major', 'Minor', 'Minor', 'Major', 'Major', 'Minor'],
     },
 ]
 
@@ -119,4 +93,34 @@ export function sanitizeNote(note: number): number {
         return sanitizeNote(note + 12)
     }
     return note
+}
+
+export function genChord(tonic: number, type: ChordType, isSharp: boolean): Chord {
+    let chordNum: number[]
+    let chordLet: string[]
+    switch (type) {
+        case 'Major':
+            chordNum = [tonic, tonic + 4, tonic + 7, tonic + 11].map((note) => sanitizeNote(note))
+            break
+        case 'Minor':
+            chordNum = [tonic, tonic + 3, tonic + 7, tonic + 10].map((note) => sanitizeNote(note))
+            break
+        case 'Diminished':
+            chordNum = [tonic, tonic + 3, tonic + 6, tonic + 9].map((note) => sanitizeNote(note))
+            break
+        default:
+            throw `getChord passed with invalid 'type' parameter: "${type}"`
+    }
+
+    chordLet = chordNum.map((note) => getLet(note, isSharp))
+
+    return {
+        tonic: {
+            num: tonic,
+            let: getLet(tonic, isSharp),
+        },
+        type: type,
+        num: chordNum,
+        let: chordLet,
+    }
 }

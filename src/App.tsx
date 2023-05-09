@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { ScaleSelector } from './scale/ScaleSelector'
+import { genScaleInfo } from './scale/genScaleInfo'
 
 function App() {
     const [scaleSettings, setScaleSettings] = useState<ScaleSettings>({
@@ -11,9 +10,13 @@ function App() {
         isSharp: true,
     })
 
+    const scaleInfo = genScaleInfo(scaleSettings)
+
+    console.log(scaleInfo)
+
     return (
         <>
-            <ScaleSelector />
+            <ScaleSelector scaleInfo={scaleInfo} setScaleSettings={setScaleSettings} />
             <h1>Vite + React</h1>
         </>
     )
