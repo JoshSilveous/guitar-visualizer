@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './App.scss'
 import { ScaleSelector } from './scale/ScaleSelector'
 import { genScaleInfo } from './scale/genScaleInfo'
 
