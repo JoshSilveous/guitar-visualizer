@@ -17,7 +17,7 @@ export function genScaleInfo(scaleSettings: ScaleSettings) {
         },
         mode: {
             num: scaleSettings.mode,
-            name: mode.modeName,
+            name: mode.name,
         },
         isSharp: scaleSettings.isSharp,
         scale: {

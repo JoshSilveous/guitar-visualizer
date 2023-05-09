@@ -1,44 +1,44 @@
 export const SCALE_LETTERS_SHARP = ['G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G']
 export const SCALE_LETTERS_FLAT = ['A♭', 'A', 'B♭', 'B', 'C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G']
 interface Scale_Mode {
-    modeName: string
-    modeFormula: number[]
+    name: string
+    formula: number[]
     chordPattern: ChordType[]
 }
 export const SCALE_MODES: Scale_Mode[] = [
     {
-        modeName: 'Major (Ionian)',
-        modeFormula: [2, 2, 1, 2, 2, 2, 1],
+        name: 'Major (Ionian)',
+        formula: [2, 2, 1, 2, 2, 2, 1],
         chordPattern: ['Major', 'Minor', 'Minor', 'Major', 'Major', 'Minor', 'Diminished'],
     },
     {
-        modeName: 'Dorian',
-        modeFormula: [2, 1, 2, 2, 2, 1, 2],
+        name: 'Dorian',
+        formula: [2, 1, 2, 2, 2, 1, 2],
         chordPattern: ['Minor', 'Minor', 'Major', 'Major', 'Minor', 'Diminished', 'Major'],
     },
     {
-        modeName: 'Phrygian',
-        modeFormula: [1, 2, 2, 2, 1, 2, 2],
+        name: 'Phrygian',
+        formula: [1, 2, 2, 2, 1, 2, 2],
         chordPattern: ['Minor', 'Major', 'Major', 'Minor', 'Diminished', 'Major', 'Minor'],
     },
     {
-        modeName: 'Lydian',
-        modeFormula: [2, 2, 2, 1, 2, 2, 1],
+        name: 'Lydian',
+        formula: [2, 2, 2, 1, 2, 2, 1],
         chordPattern: ['Major', 'Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor'],
     },
     {
-        modeName: 'Mixolydian',
-        modeFormula: [2, 2, 1, 2, 2, 1, 2],
+        name: 'Mixolydian',
+        formula: [2, 2, 1, 2, 2, 1, 2],
         chordPattern: ['Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major'],
     },
     {
-        modeName: 'Minor (Aeolian)',
-        modeFormula: [2, 1, 2, 2, 1, 2, 2],
+        name: 'Minor (Aeolian)',
+        formula: [2, 1, 2, 2, 1, 2, 2],
         chordPattern: ['Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major', 'Major'],
     },
     {
-        modeName: 'Locrian',
-        modeFormula: [1, 2, 2, 1, 2, 2, 2],
+        name: 'Locrian',
+        formula: [1, 2, 2, 1, 2, 2, 2],
         chordPattern: ['Diminished', 'Major', 'Minor', 'Minor', 'Major', 'Major', 'Minor'],
     },
 ]
@@ -57,7 +57,7 @@ export function genScale(note: number, mode: number) {
         throw `input for getScale invalid. mode ${mode} doesn't exist`
     }
 
-    return SCALE_MODES[mode].modeFormula.map((incre) => {
+    return SCALE_MODES[mode].formula.map((incre) => {
         note = sanitizeNote(note + incre)
         return sanitizeNote(note - incre)
     })
