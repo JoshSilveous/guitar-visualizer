@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.scss'
 import './global.scss'
-import { ScaleSelector } from './scale/ScaleSelector'
-import { genScaleInfo } from './scale/genScaleInfo'
-import { ScaleInfo } from './scale/ScaleInfo'
+import { ScaleSelector } from './comp_main/scale/ScaleSelector'
+import { genScaleInfo } from './comp_main/scale/genScaleInfo'
+import { ScaleInfo } from './comp_main/scale/ScaleInfo'
 
 function App() {
     const [scaleSettings, setScaleSettings] = useState<ScaleSettings>({
