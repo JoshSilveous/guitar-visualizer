@@ -1,0 +1,89 @@
+.scaleinfo-container {
+    .scale-name {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .scale-notes-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 5px;
+        .scale-note {
+            padding: 10px;
+            background-color: var(--color-4);
+            border-radius: 50px;
+            width: 25px;
+            height: 25px;
+            font-size: 25px;
+            font-weight: 500;
+            * {
+                transform: translateY(-7.5px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    .scale-chords-container {
+        margin-top: 10px;
+        background-color: var(--color-4);
+        border-radius: 10px;
+        .chord-row {
+            width: 100%;
+            font-size: 23px;
+            .content {
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                padding: 5px 10px;
+                .chord-num {
+                    width: 50px;
+                    text-align: left;
+                    font-size: 28px;
+                    font-weight: 500;
+                }
+                .chord-name {
+                    margin-right: auto;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    .chord-tonic {
+                        width: 35px;
+                        text-align: left;
+                    }
+                }
+                .chord-note {
+                    padding: 12px;
+                    background-color: var(--color-1);
+                    border-radius: 50px;
+                    width: 15px;
+                    height: 15px;
+                    font-size: 25px;
+                    font-weight: 500;
+                    margin-left: 20px;
+                    * {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transform: translateY(-12px);
+                    }
+                }
+                .chord-note:hover {
+                    background-color: green;
+                }
+            }
+
+            &:first-child {
+                border-radius: 10px 10px 0px 0px;
+            }
+            &:last-child {
+                border-radius: 0px 0px 10px 10px;
+            }
+
+            &:hover {
+                background-color: red;
+            }
+        }
+    }
+}

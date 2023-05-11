@@ -1,10 +1,20 @@
+body {
+    background-color: var(--color-3);
+}
+
 .section {
-    background-color: var(--section-background);
+    background-color: var(--color-5);
     padding: 20px;
     border-radius: 20px;
     margin: 5px;
+    color: var(--color-3);
+    width: auto;
 }
 
 select {
-    background-color: red;
+    background-color: var(--color-1);
+    padding: 7px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
 }

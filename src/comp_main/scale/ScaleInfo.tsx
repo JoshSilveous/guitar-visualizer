@@ -1,4 +1,6 @@
 import React from 'react'
+import './ScaleInfo.scss'
+import { genRomanNum } from './scale'
 
 interface ScaleInfoProps {
     scaleInfo: ScaleInfo
@@ -8,24 +10,38 @@ interface ScaleInfoProps {
  */
 export function ScaleInfo({ scaleInfo }: ScaleInfoProps) {
     const scaleNotesDisplay = scaleInfo.scale.let.map((note) => {
-        return <span className="scale-note">{note}</span>
+        return (
+            <div className="scale-note">
+                <div>{note}</div>
+            </div>
+        )
     })
 
-    const scaleChordsDisplay = scaleInfo.chords.map((chord) => {
+    const scaleChordsDisplay = scaleInfo.chords.map((chord, index) => {
+        const chordNum = genRomanNum(index + 1, chord.type)
         const chordNotesDisplay = chord.let.map((note) => {
             /* sometimes, a note (usually the 7th) isn't actually in the 
                scale currently selected. If this is the case, we want to add 
                a "not-in-scale" class to the note */
 
             const className = scaleInfo.scale.let.includes(note) ? 'chord-note' : 'chord-note not-in-scale'
-            return <span className={className}>{note}</span>
+
+            return (
+                <div className={className}>
+                    <div>{note}</div>
+                </div>
+            )
         })
         return (
             <div className="chord-row">
-                <span className="chord-name">
-                    {chord.tonic.let} {chord.type}
+                <span className="content">
+                    <div className="chord-num">{chordNum}</div>
+                    <div className="chord-name">
+                        <div className="chord-tonic">{chord.tonic.let}</div>
+                        <div className="chord-type">{chord.type}</div>
+                    </div>
+                    {chordNotesDisplay}
                 </span>
-                {chordNotesDisplay}
             </div>
         )
     })

@@ -95,6 +95,13 @@ export function sanitizeNote(note: number): number {
     return note
 }
 
+/**
+ * Generates a Chord from a tonic note, given type, including numeric and alphabetic notes.
+ * @param tonic The tonic note
+ * @param type `"Major" | "Minor" | "Diminished"`
+ * @param isSharp Boolean, affects returned notes
+ * @returns a `Chord` object.
+ */
 export function genChord(tonic: number, type: ChordType, isSharp: boolean): Chord {
     let chordNum: number[]
     let chordLet: string[]
@@ -123,4 +130,53 @@ export function genChord(tonic: number, type: ChordType, isSharp: boolean): Chor
         num: chordNum,
         let: chordLet,
     }
+}
+
+/**
+ * Generated a Roman Numeral from a number, for musical notation.
+ * Meant to annotate chords.
+ * @param num The number, `1-7`.
+ * @param type The type of chord being annotated.
+ *
+ * `"Major"` = Uppercase
+ *
+ * `"Minor"` = Lowercase
+ *
+ * `"Diminished"` = Lowercase + "°" suffix
+ * @returns The formatted numeral.
+ */
+export function genRomanNum(num: number, type: ChordType) {
+    let romanNum
+    switch (num) {
+        case 1:
+            romanNum = 'I'
+            break
+        case 2:
+            romanNum = 'II'
+            break
+        case 3:
+            romanNum = 'III'
+            break
+        case 4:
+            romanNum = 'IV'
+            break
+        case 5:
+            romanNum = 'V'
+            break
+        case 6:
+            romanNum = 'VI'
+            break
+        case 7:
+            romanNum = 'VII'
+            break
+        default:
+            return 'N/A'
+    }
+    if (type === 'Minor' || type === 'Diminished') {
+        romanNum = romanNum.toLowerCase()
+    }
+    if (type === 'Diminished') {
+        romanNum = romanNum + '°'
+    }
+    return romanNum
 }
