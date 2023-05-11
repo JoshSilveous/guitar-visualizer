@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import './App.scss'
+import './global.scss'
 import { ScaleSelector } from './scale/ScaleSelector'
 import { genScaleInfo } from './scale/genScaleInfo'
+import { ScaleInfo } from './scale/ScaleInfo'
 
 function App() {
     const [scaleSettings, setScaleSettings] = useState<ScaleSettings>({
@@ -17,6 +19,7 @@ function App() {
     return (
         <>
             <ScaleSelector scaleInfo={scaleInfo} setScaleSettings={setScaleSettings} />
+            <ScaleInfo scaleInfo={scaleInfo} />
             <h1>Vite + React</h1>
         </>
     )
