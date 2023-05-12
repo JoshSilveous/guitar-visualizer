@@ -1,17 +1,57 @@
-import React from 'react'
 import './ScaleInfo.scss'
 import { genRomanNum } from './scale'
 
 interface ScaleInfoProps {
     scaleInfo: ScaleInfo
+    highlightState: { notes: boolean[]; chords: boolean[] }
+    highlightCtrl: {
+        highlightNote: (noteIndex: number) => void
+        unhighlightNote: (noteIndex: number) => void
+        highlightChord: (chordIndex: number) => void
+        unhighlightChord: (chordIndex: number) => void
+    }
 }
 /**
  * Displays information about the scale, specifically notes and chords.
  */
-export function ScaleInfo({ scaleInfo }: ScaleInfoProps) {
-    const scaleNotesDisplay = scaleInfo.scale.let.map((note) => {
+
+let userIsSelectingNote = false
+
+export function ScaleInfo({ scaleInfo, highlightState, highlightCtrl }: ScaleInfoProps) {
+    function toggleHighlightNote(noteIndex: number) {
+        if (highlightState.notes[noteIndex]) {
+            highlightCtrl.unhighlightNote(noteIndex)
+        } else {
+            highlightCtrl.highlightNote(noteIndex)
+        }
+    }
+    function toggleHighlightChord(chordIndex: number) {
+        if (!userIsSelectingNote) {
+            if (highlightState.chords[chordIndex]) {
+                highlightCtrl.unhighlightChord(chordIndex)
+                scaleInfo.chords[chordIndex].num.forEach((note, index) => {
+                    if (index !== 3) {
+                        highlightCtrl.unhighlightNote(scaleInfo.scale.num.indexOf(note))
+                    }
+                })
+            } else {
+                highlightCtrl.highlightChord(chordIndex)
+                scaleInfo.chords[chordIndex].num.forEach((note, index) => {
+                    if (index !== 3) {
+                        highlightCtrl.highlightNote(scaleInfo.scale.num.indexOf(note))
+                    }
+                })
+            }
+        }
+    }
+
+    const scaleNotesDisplay = scaleInfo.scale.let.map((note, index) => {
+        let className = 'scale-note'
+        if (highlightState.notes[index]) {
+            className += ' highlighted'
+        }
         return (
-            <div className="scale-note">
+            <div className={className} onClick={() => toggleHighlightNote(index)}>
                 <div>{note}</div>
             </div>
         )
@@ -22,18 +62,42 @@ export function ScaleInfo({ scaleInfo }: ScaleInfoProps) {
         const chordNotesDisplay = chord.let.map((note) => {
             /* sometimes, a note (usually the 7th) isn't actually in the 
                scale currently selected. If this is the case, we want to add 
-               a "not-in-scale" class to the note */
+               a "out-of-scale" class to the note */
 
-            const className = scaleInfo.scale.let.includes(note) ? 'chord-note' : 'chord-note not-in-scale'
+            let className = 'chord-note'
+            let caption = ''
+            if (!scaleInfo.scale.let.includes(note)) {
+                className += ' out-of-scale'
+                caption = `${note} is not in the scale of ${scaleInfo.tonic.let} ${scaleInfo.mode.name}, and should be avoided.`
+            }
+
+            const noteIndex = scaleInfo.scale.let.indexOf(note)
+            if (highlightState.notes[noteIndex]) {
+                className += ' highlighted'
+            }
 
             return (
-                <div className={className}>
+                <div
+                    className={className}
+                    onClick={() => toggleHighlightNote(noteIndex)}
+                    title={caption}
+                    onMouseEnter={() => {
+                        userIsSelectingNote = true
+                    }}
+                    onMouseLeave={() => {
+                        userIsSelectingNote = false
+                    }}
+                >
                     <div>{note}</div>
                 </div>
             )
         })
+        let className = 'chord-row'
+        if (highlightState.chords[index]) {
+            className += ' highlighted'
+        }
         return (
-            <div className="chord-row">
+            <div className={className} onClick={() => toggleHighlightChord(index)}>
                 <span className="content">
                     <div className="chord-num">{chordNum}</div>
                     <div className="chord-name">
@@ -52,6 +116,21 @@ export function ScaleInfo({ scaleInfo }: ScaleInfoProps) {
                 {scaleInfo.tonic.let} {scaleInfo.mode.name}
             </div>
             <div className="scale-notes-container">{scaleNotesDisplay}</div>
+            <div className="scale-chords-label">
+                <div className="chord-name-label">Chord Name</div>
+                <div className="chord-note-label">
+                    <span>1</span>st
+                </div>
+                <div className="chord-note-label">
+                    <span>3</span>rd
+                </div>
+                <div className="chord-note-label">
+                    <span>5</span>th
+                </div>
+                <div className="chord-note-label">
+                    <span>7</span>th
+                </div>
+            </div>
             <div className="scale-chords-container">{scaleChordsDisplay}</div>
         </div>
     )

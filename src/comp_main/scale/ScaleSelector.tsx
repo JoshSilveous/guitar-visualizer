@@ -11,8 +11,6 @@ interface ScaleSelectorProps {
  * Component which has options for the user to change the current `ScaleSettings` properties
  */
 export function ScaleSelector({ scaleInfo, setScaleSettings }: ScaleSelectorProps) {
-    console.log(scaleInfo)
-
     const tonicOptions = scaleInfo.isSharp ? SCALE_LETTERS_SHARP : SCALE_LETTERS_FLAT
     const tonicOptionsDropdown = tonicOptions.map((note, index) => {
         return (
@@ -56,13 +54,15 @@ export function ScaleSelector({ scaleInfo, setScaleSettings }: ScaleSelectorProp
 
     return (
         <div className="section scale-selector">
-            <span className="label">Current Scale:</span>
-            <select className="tonic-dropdown " defaultValue={scaleInfo.tonic.num} onChange={handleTonicChange}>
-                {tonicOptionsDropdown}
-            </select>
-            <select className="mode-dropdown" defaultValue={scaleInfo.mode.num} onChange={handleModeChange}>
-                {modeOptionsDropdown}
-            </select>
+            <div className="scale-container">
+                <span className="label">Current Scale:</span>
+                <select className="tonic-dropdown" defaultValue={scaleInfo.tonic.num} onChange={handleTonicChange}>
+                    {tonicOptionsDropdown}
+                </select>
+                <select className="mode-dropdown" defaultValue={scaleInfo.mode.num} onChange={handleModeChange}>
+                    {modeOptionsDropdown}
+                </select>
+            </div>
             <label htmlFor="scale-selector_sharp-checkbox">Use Sharps?</label>
             <input
                 className="sharp-checkbox"

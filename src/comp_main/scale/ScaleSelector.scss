@@ -1,2 +1,20 @@
 .scale-selector {
+    .scale-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        .tonic-dropdown {
+            width: 60px;
+            height: 33px;
+        }
+        .mode-dropdown {
+            width: 125px;
+            height: 33px;
+        }
+    }
+    .sharp-checkbox {
+        height: 15px;
+        width: 15px;
+        color: var(--a1-background);
+    }
 }

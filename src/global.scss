@@ -1,18 +1,20 @@
 body {
-    background-color: var(--color-3);
+    background-color: var(--background);
+    color: var(--background-text);
 }
 
 .section {
-    background-color: var(--color-5);
+    background-color: var(--s1-background);
     padding: 20px;
     border-radius: 20px;
     margin: 5px;
-    color: var(--color-3);
+    color: var(--s1-text);
     width: auto;
 }
 
 select {
-    background-color: var(--color-1);
+    background-color: var(--a1-background);
+    color: var(--a1-text);
     padding: 7px;
     border-radius: 50px;
     outline: none;

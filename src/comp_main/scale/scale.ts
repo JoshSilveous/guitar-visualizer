@@ -1,4 +1,4 @@
-export const SCALE_LETTERS_SHARP = ['G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G']
+export const SCALE_LETTERS_SHARP = ['G♯', 'A', 'A♯', 'B', 'C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G']
 export const SCALE_LETTERS_FLAT = ['A♭', 'A', 'B♭', 'B', 'C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G']
 interface Scale_Mode {
     name: string
