@@ -1,5 +1,5 @@
 import React from 'react'
-import { SCALE_LETTERS_FLAT, SCALE_LETTERS_SHARP, SCALE_MODES } from './scale'
+import { SCALE_LETTERS_FLAT, SCALE_LETTERS_SHARP, SCALE_MODES } from '../scale'
 import './ScaleSelector.scss'
 
 interface ScaleSelectorProps {
