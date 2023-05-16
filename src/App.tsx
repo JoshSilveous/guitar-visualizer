@@ -14,7 +14,7 @@ function App() {
 
     const scaleInfo = genScaleInfo(scaleSettings)
 
-    const defaultHighlightState = {
+    const defaultHighlightState: HighlightState = {
         notes: scaleInfo.scale.num.map(() => false),
         chords: scaleInfo.chords.map(() => false),
     }
