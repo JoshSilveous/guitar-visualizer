@@ -1,0 +1,25 @@
+.prog-row {
+    display: flex;
+    .row-num {
+        width: 20px;
+    }
+
+    .row-chord {
+        width: 85px;
+        display: flex;
+        align-items: flex-end;
+
+        .numeral {
+            width: 20px;
+        }
+        .chord-letter {
+            width: 20px;
+        }
+
+        .chord-type {
+            margin-left: 3px;
+            font-size: 12px;
+            align-self: flex-end;
+        }
+    }
+}

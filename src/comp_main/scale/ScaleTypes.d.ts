@@ -14,6 +14,14 @@ export global {
         num: number[]
         let: string[]
     }
+    interface ChordProgression {
+        /**
+         * Range `1-7`. If the number is a multiple of `10`, this indicated a seventh note.
+         *
+         * Example: `50` = V7 / v7
+         */
+        pattern: number[]
+    }
     interface ScaleInfo {
         tonic: {
             num: number
@@ -22,6 +30,7 @@ export global {
         mode: {
             num: number
             name: string
+            chordProgressions: ChordProgression[]
         }
         isSharp: boolean
         scale: {

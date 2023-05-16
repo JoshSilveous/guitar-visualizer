@@ -1,6 +1,7 @@
 import './ScaleInfo.scss'
 import { ChordTable } from './ChordTable/ChordTable'
 import { ScaleNotes } from './ScaleNotes/ScaleNotes'
+import { ChordPatterns } from './ChordPatterns/ChordPatterns'
 
 interface ScaleInfoProps {
     scaleInfo: ScaleInfo
@@ -52,6 +53,12 @@ export function ScaleInfo({ scaleInfo, highlightState, highlightCtrl }: ScaleInf
                 toggleHighlightNote={toggleHighlightNote}
             />
             <ChordTable
+                scaleInfo={scaleInfo}
+                highlightState={highlightState}
+                toggleHighlightNote={toggleHighlightNote}
+                toggleHighlightChord={toggleHighlightChord}
+            />
+            <ChordPatterns
                 scaleInfo={scaleInfo}
                 highlightState={highlightState}
                 toggleHighlightNote={toggleHighlightNote}

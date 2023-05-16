@@ -4,42 +4,74 @@ interface Scale_Mode {
     name: string
     formula: number[]
     chordPattern: ChordType[]
+    chordProgessions: ChordProgression[]
 }
 export const SCALE_MODES: Scale_Mode[] = [
     {
         name: 'Major (Ionian)',
         formula: [2, 2, 1, 2, 2, 2, 1],
         chordPattern: ['Major', 'Minor', 'Minor', 'Major', 'Major', 'Minor', 'Diminished'],
+        chordProgessions: [
+            { pattern: [1, 5, 6, 4] },
+            { pattern: [6, 4, 1, 5] },
+            { pattern: [1, 4, 5, 4] },
+            { pattern: [1, 6, 4, 5] },
+            { pattern: [2, 5, 1, 6] },
+        ],
     },
     {
         name: 'Dorian',
         formula: [2, 1, 2, 2, 2, 1, 2],
         chordPattern: ['Minor', 'Minor', 'Major', 'Major', 'Minor', 'Diminished', 'Major'],
+        chordProgessions: [
+            { pattern: [2, 5] },
+            { pattern: [2, 4, 5] },
+            { pattern: [2, 1, 5] },
+            { pattern: [2, 3, 2, 5] },
+            { pattern: [2, 3, 4, 3] },
+        ],
     },
     {
         name: 'Phrygian',
         formula: [1, 2, 2, 2, 1, 2, 2],
         chordPattern: ['Minor', 'Major', 'Major', 'Minor', 'Diminished', 'Major', 'Minor'],
+        chordProgessions: [{ pattern: [2, 3, 4, 1] }, { pattern: [1, 2, 3] }, { pattern: [2, 3, 1] }],
     },
     {
         name: 'Lydian',
         formula: [2, 2, 2, 1, 2, 2, 1],
         chordPattern: ['Major', 'Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor'],
+        chordProgessions: [
+            { pattern: [1, 2, 5] },
+            { pattern: [1, 2, 5, 1] },
+            { pattern: [1, 3, 2, 5] },
+            { pattern: [1, 6, 7, 2] },
+            { pattern: [1, 2, 3, 2, 1] },
+        ],
     },
     {
         name: 'Mixolydian',
         formula: [2, 2, 1, 2, 2, 1, 2],
         chordPattern: ['Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major'],
+        chordProgessions: [{ pattern: [2, 5, 10] }, { pattern: [7, 4, 1] }, { pattern: [7, 2, 5, 4, 1] }],
     },
     {
         name: 'Minor (Aeolian)',
         formula: [2, 1, 2, 2, 1, 2, 2],
         chordPattern: ['Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major', 'Major'],
+        chordProgessions: [
+            { pattern: [1, 4, 5, 1] },
+            { pattern: [1, 2, 5, 1] },
+            { pattern: [1, 6, 3, 7] },
+            { pattern: [1, 7, 6, 7, 1] },
+            { pattern: [1, 7, 6, 50] },
+        ],
     },
     {
         name: 'Locrian',
         formula: [1, 2, 2, 1, 2, 2, 2],
         chordPattern: ['Diminished', 'Major', 'Minor', 'Minor', 'Major', 'Major', 'Minor'],
+        chordProgessions: [],
     },
 ]
 

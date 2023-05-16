@@ -1,6 +1,6 @@
 import * as scale from './scale'
 
-export function genScaleInfo(scaleSettings: ScaleSettings) {
+export function genScaleInfo(scaleSettings: ScaleSettings): ScaleInfo {
     const scaleNum = scale.genScale(scaleSettings.tonic, scaleSettings.mode)
     const scaleLet = scaleNum.map((note) => scale.getLet(note, scaleSettings.isSharp))
 
@@ -18,6 +18,7 @@ export function genScaleInfo(scaleSettings: ScaleSettings) {
         mode: {
             num: scaleSettings.mode,
             name: mode.name,
+            chordProgressions: mode.chordProgessions,
         },
         isSharp: scaleSettings.isSharp,
         scale: {
@@ -25,5 +26,5 @@ export function genScaleInfo(scaleSettings: ScaleSettings) {
             let: scaleLet,
         },
         chords: chords,
-    }
+    } as ScaleInfo
 }
