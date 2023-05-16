@@ -3,38 +3,7 @@
         font-size: 20px;
         font-weight: 700;
     }
-    .scale-notes-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 10px;
-        gap: 5px;
-        .scale-note {
-            padding: 10px;
-            background-color: var(--s2-background);
-            color: var(--s2-text);
-            border-radius: 50px;
-            width: 25px;
-            height: 25px;
-            font-size: 25px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.1s ease background-color, 0.1s ease scale;
-            &:hover {
-                scale: 110%;
-            }
-            &.highlighted {
-                background-color: var(--s2-background-hover);
-            }
-            &:active {
-                scale: 100%;
-            }
-            * {
-                transform: translateY(-7.5px);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-    }
+
+    @import './ScaleNotes/ScaleNotes.scss';
+    @import './ChordTable/ChordTable.scss';
 }

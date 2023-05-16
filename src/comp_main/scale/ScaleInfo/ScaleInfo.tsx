@@ -1,5 +1,6 @@
 import './ScaleInfo.scss'
 import { ChordTable } from './ChordTable/ChordTable'
+import { ScaleNotes } from './ScaleNotes/ScaleNotes'
 
 interface ScaleInfoProps {
     scaleInfo: ScaleInfo
@@ -40,24 +41,16 @@ export function ScaleInfo({ scaleInfo, highlightState, highlightCtrl }: ScaleInf
         }
     }
 
-    const scaleNotesDisplay = scaleInfo.scale.let.map((note, index) => {
-        let className = 'scale-note'
-        if (highlightState.notes[index]) {
-            className += ' highlighted'
-        }
-        return (
-            <div className={className} onClick={() => toggleHighlightNote(index)}>
-                <div>{note}</div>
-            </div>
-        )
-    })
-
     return (
         <div className="section scaleinfo-container">
             <div className="scale-name">
                 {scaleInfo.tonic.let} {scaleInfo.mode.name}
             </div>
-            <div className="scale-notes-container">{scaleNotesDisplay}</div>
+            <ScaleNotes
+                scaleInfo={scaleInfo}
+                highlightState={highlightState}
+                toggleHighlightNote={toggleHighlightNote}
+            />
             <ChordTable
                 scaleInfo={scaleInfo}
                 highlightState={highlightState}

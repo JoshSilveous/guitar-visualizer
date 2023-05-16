@@ -1,5 +1,4 @@
 import { genRomanNum } from '../../scale'
-import './ChordTable.scss'
 
 interface ChordTableProps {
     scaleInfo: ScaleInfo
