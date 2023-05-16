@@ -15,7 +15,7 @@ let userIsSelectingNote = false
 export function ChordTable({ scaleInfo, highlightState, toggleHighlightChord, toggleHighlightNote }: ChordTableProps) {
     const scaleChordsDisplay = scaleInfo.chords.map((chord, index) => {
         const chordNum = genRomanNum(index + 1, chord.type)
-        const chordNotesDisplay = chord.let.map((note) => {
+        const chordNotesDisplay = chord.let.map((note, noteRelativeIndex) => {
             /* sometimes, a note (usually the 7th) isn't actually in the 
                scale currently selected. If this is the case, we want to add 
                a "out-of-scale" class to the note */
@@ -43,6 +43,7 @@ export function ChordTable({ scaleInfo, highlightState, toggleHighlightChord, to
                     onMouseLeave={() => {
                         userIsSelectingNote = false
                     }}
+                    key={noteRelativeIndex}
                 >
                     <div>{note}</div>
                 </div>
@@ -60,7 +61,7 @@ export function ChordTable({ scaleInfo, highlightState, toggleHighlightChord, to
         }
 
         return (
-            <div className={className} onClick={() => handleNoteClick(index)}>
+            <div className={className} onClick={() => handleNoteClick(index)} key={index}>
                 <span className="content">
                     <div className="chord-num">{chordNum}</div>
                     <div className="chord-name">

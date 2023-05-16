@@ -11,7 +11,7 @@ export function ScaleNotes({ scaleInfo, highlightState, toggleHighlightNote }: S
             className += ' highlighted'
         }
         return (
-            <div className={className} onClick={() => toggleHighlightNote(index)}>
+            <div className={className} onClick={() => toggleHighlightNote(index)} key={index}>
                 <div>{note}</div>
             </div>
         )
