@@ -44,26 +44,35 @@ export function ScaleInfo({ scaleInfo, highlightState, highlightCtrl }: ScaleInf
 
     return (
         <div className="section scaleinfo-container">
-            <div className="scale-name">
-                {scaleInfo.tonic.let} {scaleInfo.mode.name}
+            <div className="responsive-switch-container">
+                <div className="switch-col-1">
+                    <div className="scale-summary">
+                        <div className="scale-name">
+                            {scaleInfo.tonic.let} {scaleInfo.mode.name}
+                        </div>
+                        <ScaleNotes
+                            scaleInfo={scaleInfo}
+                            highlightState={highlightState}
+                            toggleHighlightNote={toggleHighlightNote}
+                        />
+                    </div>
+
+                    <ChordTable
+                        scaleInfo={scaleInfo}
+                        highlightState={highlightState}
+                        toggleHighlightNote={toggleHighlightNote}
+                        toggleHighlightChord={toggleHighlightChord}
+                    />
+                </div>
+                <div className="switch-col-2">
+                    <ChordPatterns
+                        scaleInfo={scaleInfo}
+                        highlightState={highlightState}
+                        toggleHighlightNote={toggleHighlightNote}
+                        toggleHighlightChord={toggleHighlightChord}
+                    />
+                </div>
             </div>
-            <ScaleNotes
-                scaleInfo={scaleInfo}
-                highlightState={highlightState}
-                toggleHighlightNote={toggleHighlightNote}
-            />
-            <ChordTable
-                scaleInfo={scaleInfo}
-                highlightState={highlightState}
-                toggleHighlightNote={toggleHighlightNote}
-                toggleHighlightChord={toggleHighlightChord}
-            />
-            <ChordPatterns
-                scaleInfo={scaleInfo}
-                highlightState={highlightState}
-                toggleHighlightNote={toggleHighlightNote}
-                toggleHighlightChord={toggleHighlightChord}
-            />
         </div>
     )
 }

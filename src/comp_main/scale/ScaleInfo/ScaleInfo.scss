@@ -1,10 +1,34 @@
 .scaleinfo-container {
-    .scale-name {
-        font-size: 20px;
-        font-weight: 700;
-    }
+    .responsive-switch-container {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
 
-    @import './ScaleNotes/ScaleNotes.scss';
-    @import './ChordTable/ChordTable.scss';
-    @import './ChordPatterns/ChordPatterns.scss';
+        .switch-col-1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @import './ChordTable/ChordTable.scss';
+            .scale-summary {
+                .scale-name {
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+                @import './ScaleNotes/ScaleNotes.scss';
+            }
+        }
+        .switch-col-2 {
+            @import './ChordPatterns/ChordPatterns.scss';
+        }
+    }
+    @media (max-width: 1000px) {
+        .responsive-switch-container {
+            display: flex;
+            flex-direction: column;
+
+            .switch-col-2 {
+                margin-top: 20px;
+            }
+        }
+    }
 }
