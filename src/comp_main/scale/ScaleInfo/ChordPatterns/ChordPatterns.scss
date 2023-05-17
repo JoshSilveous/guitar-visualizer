@@ -1,25 +1,75 @@
-.prog-row {
-    display: flex;
-    .row-num {
-        width: 20px;
+.scale-chord-patterns {
+    .title {
+        font-size: 24px;
+        margin-top: 20px;
     }
-
-    .row-chord {
-        width: 85px;
+    .progression_container {
         display: flex;
-        align-items: flex-end;
+        flex-direction: column;
+        gap: 5px;
+        background-color: var(--s2-background);
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        .prog-row {
+            display: flex;
+            justify-content: center;
+            background-color: var(--s3-background);
+            padding: 5px;
+            border-radius: 10px;
 
-        .numeral {
-            width: 20px;
-        }
-        .chord-letter {
-            width: 20px;
-        }
+            .row-chord {
+                width: 85px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: space-between;
+                height: auto;
+                width: 100%;
+                cursor: pointer;
+                transition: 0.2s ease background-color;
+                & > * {
+                    transition: 0.2s ease scale;
+                }
 
-        .chord-type {
-            margin-left: 3px;
-            font-size: 12px;
-            align-self: flex-end;
+                &:hover > * {
+                    scale: 110%;
+                }
+
+                &.highlighted {
+                    background-color: var(--s3-background-hover);
+                }
+
+                &:first-child {
+                    border-radius: 10px 0 0 10px;
+                }
+
+                &:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .chord-numeral {
+                    display: flex;
+                    justify-content: center;
+                    height: 24px;
+                }
+
+                .chord-letter {
+                    font-size: 40px;
+                    text-align: center;
+                    line-height: 40px;
+                    height: fit-content;
+                }
+
+                .chord-type {
+                    font-size: 12px;
+                }
+            }
+
+            .divider {
+                width: 6px;
+                background-color: var(--s3-text);
+            }
         }
     }
 }

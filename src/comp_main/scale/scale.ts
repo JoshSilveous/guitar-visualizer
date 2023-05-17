@@ -53,7 +53,7 @@ export const SCALE_MODES: Scale_Mode[] = [
         name: 'Mixolydian',
         formula: [2, 2, 1, 2, 2, 1, 2],
         chordPattern: ['Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major'],
-        chordProgessions: [{ pattern: [2, 5, 10] }, { pattern: [7, 4, 1] }, { pattern: [7, 2, 5, 4, 1] }],
+        chordProgessions: [{ pattern: [2, 5, 1] }, { pattern: [7, 4, 1] }, { pattern: [7, 2, 5, 4, 1] }],
     },
     {
         name: 'Minor (Aeolian)',

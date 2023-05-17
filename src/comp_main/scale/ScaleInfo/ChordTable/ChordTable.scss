@@ -86,6 +86,7 @@
                     transition: 0.1s ease background-color, 0.1s ease scale, 0.1s ease box-shadow;
                     &.out-of-scale {
                         color: var(--s3-text-disabled);
+                        cursor: not-allowed;
                     }
                     &:hover:not(.out-of-scale) {
                         scale: 110%;

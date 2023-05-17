@@ -24,18 +24,18 @@ export function ScaleInfo({ scaleInfo, highlightState, highlightCtrl }: ScaleInf
             highlightCtrl.highlightNote(noteIndex)
         }
     }
-    function toggleHighlightChord(chordIndex: number) {
+    function toggleHighlightChord(chordIndex: number, includeSeventh?: boolean) {
         if (highlightState.chords[chordIndex]) {
             highlightCtrl.unhighlightChord(chordIndex)
             scaleInfo.chords[chordIndex].num.forEach((note, index) => {
-                if (index !== 3) {
+                if (index !== 3 || includeSeventh) {
                     highlightCtrl.unhighlightNote(scaleInfo.scale.num.indexOf(note))
                 }
             })
         } else {
             highlightCtrl.highlightChord(chordIndex)
             scaleInfo.chords[chordIndex].num.forEach((note, index) => {
-                if (index !== 3) {
+                if (index !== 3 || includeSeventh) {
                     highlightCtrl.highlightNote(scaleInfo.scale.num.indexOf(note))
                 }
             })

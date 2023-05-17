@@ -1,7 +1,9 @@
+import { genRomanNum } from '../../scale'
+
 interface ChordPatternsProps {
     scaleInfo: ScaleInfo
     highlightState: { notes: boolean[]; chords: boolean[] }
-    toggleHighlightChord: (chordIndex: number) => void
+    toggleHighlightChord: (chordIndex: number, includeSeventh: boolean) => void
     toggleHighlightNote: (noteIndex: number) => void
 }
 
@@ -23,35 +25,45 @@ export function ChordPatterns({
                 isSeventh = true
             }
             const chordType = scaleInfo.chords[chordNum - 1].type
-            let chordTypeLabel = chordType.substring(0, 3) + '.'
+            let chordTypeLabel: string = chordType
 
-            if (chordType === 'Major') {
-                chordTypeLabel = chordTypeLabel.toUpperCase()
-            } else {
-                chordTypeLabel = chordTypeLabel.toLowerCase()
+            const chordNumeral = genRomanNum(chordNum, chordType)
+
+            let className = 'row-chord'
+            const chordIndex = chordNum - 1
+            if (highlightState.chords[chordIndex]) {
+                className += ' highlighted'
             }
 
             return (
-                <div className="row-chord" key={chordNumIndex}>
-                    <div className="numeral">{chordNum}</div>
-                    <div className="chord-letter">
-                        {scaleInfo.chords[chordNum - 1].tonic.let}
-                        {isSeventh && <sup>7</sup>}
+                <>
+                    {chordNumIndex !== 0 && <div className="divider"></div>}
+                    <div
+                        className={className}
+                        key={chordNumIndex}
+                        onClick={() => toggleHighlightChord(chordNum - 1, isSeventh)}
+                    >
+                        <div className="chord-numeral">
+                            {chordNumeral}
+                            {isSeventh && <sup>7</sup>}
+                        </div>
+                        <div className="chord-letter">
+                            {scaleInfo.chords[chordNum - 1].tonic.let}
+                            {isSeventh && <sup>7</sup>}
+                        </div>
+                        <div className="chord-type">{chordTypeLabel}</div>
                     </div>
-                    <div className="chord-type">{chordTypeLabel}</div>
-                </div>
+                </>
             )
         })
 
-        return (
-            <div className="prog-row">
-                <div className="row-num" key={progIndex}>
-                    {progIndex + 1}
-                </div>
-                {progRow}
-            </div>
-        )
+        return <div className="prog-row">{progRow}</div>
     })
 
-    return <div className="scale-chord-patterns">{chordProgColumns}</div>
+    return (
+        <div className="scale-chord-patterns">
+            <div className="title">Suggested Chord Progressions</div>
+            <div className="progression_container">{chordProgColumns}</div>
+        </div>
+    )
 }
