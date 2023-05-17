@@ -63,7 +63,13 @@ export function ChordPatterns({
     return (
         <div className="scale-chord-patterns">
             <div className="title">Suggested Chord Progressions</div>
-            <div className="progression_container">{chordProgColumns}</div>
+            <div className="progression_container">
+                {scaleInfo.mode.chordProgressions.length === 0 ? (
+                    <span className="unavailable">No suggestions available for mode "{scaleInfo.mode.name}"</span>
+                ) : (
+                    chordProgColumns
+                )}
+            </div>
         </div>
     )
 }

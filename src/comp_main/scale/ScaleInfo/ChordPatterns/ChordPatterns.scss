@@ -11,6 +11,10 @@
         border-radius: 10px;
         padding: 10px;
         margin-top: 10px;
+
+        .unavailable {
+            color: var(--s2-text-disabled);
+        }
         .prog-row {
             display: flex;
             justify-content: center;
