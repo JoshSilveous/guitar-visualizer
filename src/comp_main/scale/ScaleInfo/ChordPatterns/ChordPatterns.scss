@@ -31,13 +31,17 @@
                 height: auto;
                 width: 100%;
                 cursor: pointer;
-                transition: 0.2s ease background-color;
+                transition: 0.1s ease background-color;
                 & > * {
-                    transition: 0.2s ease scale;
+                    transition: 0.1s ease scale;
                 }
 
-                &:hover > * {
+                &:hover > *,
+                &:focus > * {
                     scale: 110%;
+                }
+                &:active > * {
+                    scale: 105%;
                 }
 
                 &.highlighted {
