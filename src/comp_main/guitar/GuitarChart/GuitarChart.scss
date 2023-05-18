@@ -1,4 +1,7 @@
 .guitarchart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @import './Fretboard/Fretboard.scss';
     @import './FretboardControl/FretboardControl.scss';
 }

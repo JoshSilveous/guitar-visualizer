@@ -1,6 +1,8 @@
 .fretboardcontrol-container {
+    width: fit-content;
     .col-split {
         display: flex;
+        gap: 20px;
 
         h3 {
             margin: 0 0 5px 0;
