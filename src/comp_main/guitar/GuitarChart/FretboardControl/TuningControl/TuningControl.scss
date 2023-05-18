@@ -1,0 +1,100 @@
+.tuning-control {
+    display: flex;
+    flex-direction: column;
+
+    .tuning-select {
+        width: 210px;
+    }
+
+    .openstring-container {
+        background-color: var(--s2-background);
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 190px;
+        gap: 5px;
+        .openstring {
+            display: flex;
+            align-items: center;
+            background-color: var(--s3-background);
+            border-radius: 10px;
+            padding: 5px 10px;
+            width: 170px;
+            .string-num {
+                width: 50px;
+                text-align: left;
+                font-size: 20px;
+            }
+            .string-note-select {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .current-note {
+                    width: 40px;
+                    font-size: 24px;
+                }
+
+                .back-arrow,
+                .forward-arrow {
+                    font-size: 20px;
+                    cursor: pointer;
+                    transition: 0.1s ease scale;
+                    user-select: none;
+                    &:hover,
+                    &:focus {
+                        scale: 110%;
+                    }
+                    &:active {
+                        scale: 105%;
+                    }
+                }
+            }
+            .string-delete {
+                margin-left: 30px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: 0.1s ease scale;
+                user-select: none;
+                &:hover,
+                &:focus {
+                    scale: 110%;
+                }
+                &:active {
+                    scale: 105%;
+                }
+            }
+        }
+        .new-openstring {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            gap: 20px;
+            background-color: var(--s3-background);
+            border-radius: 10px;
+
+            cursor: pointer;
+            transition: 0.1s ease scale;
+            &:hover,
+            &:focus {
+                scale: 108%;
+            }
+            &:active {
+                scale: 105%;
+            }
+
+            .icon {
+                font-size: 32px;
+                font-weight: 500;
+                margin-left: 10px;
+                transform: translateY(-3px);
+            }
+            .text {
+                margin-right: 10px;
+            }
+        }
+    }
+}

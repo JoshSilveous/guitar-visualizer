@@ -14,10 +14,6 @@ interface GuitarChartProps {
     }
 }
 export function GuitarChart({ scaleInfo, highlightState, highlightCtrl }: GuitarChartProps) {
-    if (false) {
-        console.log(scaleInfo, highlightCtrl, highlightState)
-    }
-
     const [guitarSettings, setGuitarSettings] = useState<GuitarSettings>({
         stringOpens: [8, 1, 6, 11, 3, 8],
         stringLength: 12,
