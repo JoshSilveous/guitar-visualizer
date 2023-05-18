@@ -4,6 +4,7 @@ import './global.scss'
 import { ScaleSelector } from './comp_main/scale/ScaleSelector/ScaleSelector'
 import { genScaleInfo } from './comp_main/scale/genScaleInfo'
 import { ScaleInfo } from './comp_main/scale/ScaleInfo/ScaleInfo'
+import { GuitarChart } from './comp_main/guitar/GuitarChart/GuitarChart'
 
 function App() {
     const [scaleSettings, setScaleSettings] = useState<ScaleSettings>({
@@ -95,9 +96,10 @@ function App() {
 
     return (
         <>
+            <h1>Vite + React</h1>
             <ScaleSelector scaleInfo={scaleInfo} setScaleSettings={setScaleSettings} />
             <ScaleInfo scaleInfo={scaleInfo} highlightState={highlightState} highlightCtrl={highlightCtrl} />
-            <h1>Vite + React</h1>
+            <GuitarChart scaleInfo={scaleInfo} highlightState={highlightState} highlightCtrl={highlightCtrl} />
         </>
     )
 }
