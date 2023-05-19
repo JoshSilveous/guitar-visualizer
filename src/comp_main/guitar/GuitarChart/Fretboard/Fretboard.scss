@@ -1,2 +1,59 @@
 .fretboard-container {
+    width: 100%;
+    background-color: var(--s2-background);
+    border-radius: 10px;
+    .fretboard {
+        padding: 10px;
+        .string-display {
+            background-color: red;
+            height: 2px;
+            width: auto;
+            transform: translateY(-20px);
+            z-index: 1;
+        }
+        .string {
+            display: flex;
+            &:first-child {
+                border-top: 2px solid green;
+            }
+            &:nth-last-child(2) {
+                border-bottom: 2px solid green;
+            }
+            .note-container {
+                border-right: 2px solid blue;
+                z-index: 2;
+                .note {
+                    margin: 2px 10px;
+                    background-color: var(--s3-background);
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 100px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 20px;
+
+                    &:not(.not-in-scale) {
+                        transition: 0.1s ease background-color, 0.1s ease scale;
+                        cursor: pointer;
+                    }
+                    .note-text {
+                        transform: translateY(-1px);
+                        user-select: none;
+                    }
+
+                    &.highlighted {
+                        background-color: var(--s3-background-hover);
+                    }
+                    &.not-in-scale {
+                        background-color: rgba(0, 0, 0, 0);
+                        color: rgba(0, 0, 0, 0);
+                    }
+                    &:hover {
+                        scale: 110%;
+                    }
+                }
+            }
+        }
+    }
 }
