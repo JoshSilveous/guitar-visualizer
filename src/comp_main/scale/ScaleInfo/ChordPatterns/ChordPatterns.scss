@@ -1,5 +1,5 @@
 .scale-chord-patterns {
-    width: 455px;
+    width: auto;
     .title {
         font-size: 24px;
     }
@@ -45,7 +45,7 @@
                 }
 
                 &.highlighted {
-                    background-color: var(--s3-background-hover);
+                    background-color: var(--highlight-1);
                 }
 
                 &:first-child {

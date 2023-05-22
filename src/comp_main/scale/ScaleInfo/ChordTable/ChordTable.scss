@@ -39,9 +39,9 @@
             }
             &:hover {
                 .content > .chord-note:not(:last-child) {
-                    // border: 2px solid var(--s3-background-hover);
-                    box-shadow: inset 0px 0px 0px 3.5px var(--s3-background-hover);
-                    // background-color: var(--s3-background-hover);
+                    // border: 2px solid var(--highlight-1);
+                    box-shadow: inset 0px 0px 0px 3.5px var(--highlight-1);
+                    // background-color: var(--highlight-1);
                 }
                 .content > .chord-name {
                     scale: 110%;
@@ -92,7 +92,7 @@
                         scale: 110%;
                     }
                     &.highlighted {
-                        background-color: var(--s3-background-hover);
+                        background-color: var(--highlight-1);
                     }
                     &:active {
                         scale: 100%;
