@@ -19,6 +19,7 @@ export function genScaleInfo(scaleSettings: ScaleSettings): ScaleInfo {
             num: scaleSettings.mode,
             name: mode.name,
             chordProgressions: mode.chordProgessions,
+            significantNotes: mode.significantNotes,
         },
         isSharp: scaleSettings.isSharp,
         scale: {

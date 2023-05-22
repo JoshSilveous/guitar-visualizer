@@ -31,6 +31,7 @@ export global {
             num: number
             name: string
             chordProgressions: ChordProgression[]
+            significantNotes?: number[]
         }
         isSharp: boolean
         scale: {

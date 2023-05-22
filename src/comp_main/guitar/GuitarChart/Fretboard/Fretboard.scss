@@ -1,28 +1,29 @@
 .fretboard-container {
-    width: 100%;
+    max-width: 80vw;
+    width: fit-content;
     background-color: var(--s2-background);
     border-radius: 10px;
+    overflow-y: hidden;
+    overflow-x: auto;
     .fretboard {
         padding: 10px;
-        .string-display {
-            background-color: red;
-            height: 2px;
-            width: auto;
-            transform: translateY(-20px);
-            z-index: 1;
-        }
+
         .string {
             display: flex;
-            &:first-child {
-                border-top: 2px solid green;
+            width: max-content;
+
+            &:first-child > .note-container:not(:first-child) {
+                border-top: 2.5px solid var(--fretboard-lines);
             }
-            &:nth-last-child(2) {
-                border-bottom: 2px solid green;
+
+            &:last-child > .note-container:not(:first-child) {
+                border-bottom: 2.5px solid var(--fretboard-lines);
             }
+
             .note-container {
-                border-right: 2px solid blue;
-                z-index: 2;
+                border-right: 2.5px solid var(--fretboard-lines);
                 .note {
+                    z-index: 2;
                     margin: 2px 10px;
                     background-color: var(--s3-background);
                     width: 35px;
@@ -32,26 +33,66 @@
                     justify-content: center;
                     align-items: center;
                     font-size: 20px;
+                    position: relative;
+                    box-sizing: border-box;
 
                     &:not(.not-in-scale) {
-                        transition: 0.1s ease background-color, 0.1s ease scale;
+                        transition: 0.1s ease background-color, 0.1s ease scale, 0.1s ease border;
+
                         cursor: pointer;
+                        &.highlighted {
+                            background-color: var(--highlight-1);
+                            &.focused-tonic {
+                                background-color: var(--highlight-2);
+                            }
+                            &.significant {
+                                background-color: var(--highlight-3);
+                            }
+                        }
+                        &.focused-tonic {
+                            border: 3px solid var(--highlight-2);
+                        }
+                        &.significant {
+                            border: 3px solid var(--highlight-3);
+                        }
                     }
+
+                    &.not-in-scale {
+                        &.open-note {
+                            color: var(--s3-text-disabled);
+                            cursor: not-allowed;
+                            &:hover {
+                                scale: 100%;
+                            }
+                        }
+                        &:not(.open-note) {
+                            background-color: rgba(0, 0, 0, 0);
+                            color: rgba(0, 0, 0, 0);
+                        }
+                    }
+
                     .note-text {
                         transform: translateY(-1px);
                         user-select: none;
                     }
 
-                    &.highlighted {
-                        background-color: var(--s3-background-hover);
-                    }
-                    &.not-in-scale {
-                        background-color: rgba(0, 0, 0, 0);
-                        color: rgba(0, 0, 0, 0);
-                    }
                     &:hover {
                         scale: 110%;
                     }
+                }
+
+                .note-string-display {
+                    background-color: var(--fretboard-strings);
+                    height: 2.5px;
+                    width: 56.6px;
+                    transform: translateY(-20px);
+                }
+                &:not(:first-child):not(:nth-child(2)):not(:last-child) > .note-string-display {
+                    // slightly oversizes the middle strings so that there isn't a gap between them
+                    transform: translateY(-20px) scaleX(110%);
+                }
+                &:first-child > .note-string-display {
+                    background-color: transparent;
                 }
             }
         }

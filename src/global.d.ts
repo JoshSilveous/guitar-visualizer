@@ -13,5 +13,16 @@ export global {
          * using indexes to match.
          */
         chords: boolean[]
+
+        special: {
+            /**
+             * Tonic is separated from `ScaleInfo` tonic, because when a chord is highlighted, that chord becomes the new tonic to be highlighted (without changing scale).
+             */
+            tonic: num
+            /**
+             * Other notes which may be useful during improvising, to enforce a mode's unique sounds.
+             */
+            significant?: num[]
+        }
     }
 }

@@ -6,6 +6,11 @@ interface Scale_Mode {
     formula: number[]
     chordPattern: ChordType[]
     chordProgessions: ChordProgression[]
+    /**
+     * Notes of a scale which enforce the mode's theme, and should be used when soloing
+     * Represents the `index` of the note, within the `Scale` itself.
+     */
+    significantNotes?: number[]
 }
 export const SCALE_MODES: Scale_Mode[] = [
     {
@@ -19,6 +24,7 @@ export const SCALE_MODES: Scale_Mode[] = [
             { pattern: [1, 6, 4, 5] },
             { pattern: [2, 5, 1, 6] },
         ],
+        significantNotes: [6],
     },
     {
         name: 'Dorian',
@@ -31,12 +37,14 @@ export const SCALE_MODES: Scale_Mode[] = [
             { pattern: [2, 3, 2, 5] },
             { pattern: [2, 3, 4, 3] },
         ],
+        significantNotes: [5],
     },
     {
         name: 'Phrygian',
         formula: [1, 2, 2, 2, 1, 2, 2],
         chordPattern: ['Minor', 'Major', 'Major', 'Minor', 'Diminished', 'Major', 'Minor'],
         chordProgessions: [{ pattern: [2, 3, 4, 1] }, { pattern: [1, 2, 3] }, { pattern: [2, 3, 1] }],
+        significantNotes: [1],
     },
     {
         name: 'Lydian',
@@ -49,12 +57,14 @@ export const SCALE_MODES: Scale_Mode[] = [
             { pattern: [1, 6, 7, 2] },
             { pattern: [1, 2, 3, 2, 1] },
         ],
+        significantNotes: [3],
     },
     {
         name: 'Mixolydian',
         formula: [2, 2, 1, 2, 2, 1, 2],
         chordPattern: ['Major', 'Minor', 'Diminished', 'Major', 'Minor', 'Minor', 'Major'],
         chordProgessions: [{ pattern: [2, 5, 1] }, { pattern: [7, 4, 1] }, { pattern: [7, 2, 5, 4, 1] }],
+        significantNotes: [5],
     },
     {
         name: 'Minor (Aeolian)',
@@ -67,6 +77,7 @@ export const SCALE_MODES: Scale_Mode[] = [
             { pattern: [1, 7, 6, 7, 1] },
             { pattern: [1, 7, 6, 50] },
         ],
+        significantNotes: [6],
     },
     {
         name: 'Locrian',

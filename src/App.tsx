@@ -18,6 +18,10 @@ function App() {
     const defaultHighlightState: HighlightState = {
         notes: scaleInfo.scale.num.map(() => false),
         chords: scaleInfo.chords.map(() => false),
+        special: {
+            tonic: scaleInfo.scale.num[0],
+            significant: scaleInfo.mode.significantNotes,
+        },
     }
 
     const [highlightState, setHighlightState] = useState(defaultHighlightState)
@@ -39,17 +43,20 @@ function App() {
         setHighlightState((prev) => {
             // if a note in an active chord is unhighlighted, it unhighlights the chord
             let prevChords = prev.chords
+            let newSpecial = prev.special
             prev.chords.forEach((_chordStatus, chordIndex) => {
                 const majChord = scaleInfo.chords[chordIndex].num
                 majChord.pop()
 
                 if (majChord.includes(scaleInfo.scale.num[noteIndex])) {
                     prevChords[chordIndex] = false
+                    newSpecial.tonic = scaleInfo.tonic.num
                 }
             })
 
             return {
-                chords: prev.chords,
+                ...prev,
+                special: newSpecial,
                 notes: prev.notes.map((val, index) => {
                     if (index === noteIndex) {
                         return false
@@ -63,7 +70,11 @@ function App() {
         setHighlightState((prev) => {
             // unhighlights all other chords and notes
             const newNotes = prev.notes.map((_prev) => false)
+            let newSpecial = prev.special
+            newSpecial.tonic = scaleInfo.chords[chordIndex].tonic.num
+            console.log(newSpecial)
             return {
+                special: newSpecial,
                 notes: newNotes,
                 chords: prev.chords.map((_val, index) => {
                     if (index === chordIndex) {
@@ -76,8 +87,11 @@ function App() {
     }
     function unhighlightChord(chordIndex: number) {
         setHighlightState((prev) => {
+            let newSpecial = prev.special
+            newSpecial.tonic = scaleInfo.tonic.num
             return {
                 ...prev,
+                special: newSpecial,
                 chords: prev.chords.map((val, index) => {
                     if (index === chordIndex) {
                         return false
