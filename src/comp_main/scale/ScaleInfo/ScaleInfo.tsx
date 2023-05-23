@@ -5,7 +5,7 @@ import { ChordPatterns } from './ChordPatterns/ChordPatterns'
 
 interface ScaleInfoProps {
     scaleInfo: ScaleInfo
-    highlightState: { notes: boolean[]; chords: boolean[] }
+    highlightState: HighlightState
     highlightCtrl: {
         highlightNote: (noteIndex: number) => void
         unhighlightNote: (noteIndex: number) => void

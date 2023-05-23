@@ -2,7 +2,7 @@ import { genRomanNum } from '../../scale'
 
 interface ChordPatternsProps {
     scaleInfo: ScaleInfo
-    highlightState: { notes: boolean[]; chords: boolean[] }
+    highlightState: HighlightState
     toggleHighlightChord: (chordIndex: number, includeSeventh: boolean) => void
     toggleHighlightNote: (noteIndex: number) => void
 }
