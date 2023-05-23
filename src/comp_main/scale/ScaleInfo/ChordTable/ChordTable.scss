@@ -1,4 +1,6 @@
 .scale-chords {
+    overflow-x: auto;
+    overflow-y: hidden;
     .scale-chords-label {
         margin-top: 20px;
         display: flex;
@@ -51,6 +53,7 @@
                 background-color: var(--s2-background-hover);
             }
             .content {
+                min-width: 440px;
                 justify-content: center;
                 display: flex;
                 align-items: center;
