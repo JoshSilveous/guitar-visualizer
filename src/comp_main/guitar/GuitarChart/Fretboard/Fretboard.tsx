@@ -77,9 +77,21 @@ export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSett
         )
     })
 
+    let fretLabelsArray = ['open']
+    for (let i = 1; i <= guitarSettings.stringLength; i++) {
+        fretLabelsArray.push(i.toString())
+    }
+
+    const fretLabelsDisplay = fretLabelsArray.map((item) => {
+        return <div className="label">{item}</div>
+    })
+
     return (
         <div className="fretboard-container">
-            <div className="fretboard">{stringDisplay}</div>
+            <div className="fretboard">
+                {stringDisplay}
+                <div className="fret-labels">{fretLabelsDisplay}</div>
+            </div>
         </div>
     )
 }

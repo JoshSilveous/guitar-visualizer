@@ -96,5 +96,19 @@
                 }
             }
         }
+
+        .fret-labels {
+            display: flex;
+            width: max-content;
+
+            .label {
+                width: 56.6px;
+                margin-left: 2.13333px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translateX(-2px);
+            }
+        }
     }
 }
