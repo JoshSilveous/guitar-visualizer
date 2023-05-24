@@ -27,7 +27,9 @@ export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSett
         const noteDisplay = string.map((note, noteIndex) => {
             const isHighlighted = highlightState.notes[scaleInfo.scale.num.indexOf(note)]
             const isInScale = scaleInfo.scale.num.includes(note)
-            const isSignificant = highlightState.special.significant?.includes(scaleInfo.scale.num.indexOf(note))
+            const isSignificant = scaleInfo.mode.significantNotes
+                ? scaleInfo.scale.num[scaleInfo.mode.significantNotes[0]] === note
+                : false
             const noChordsAreHighlighted = highlightState.chords.every((val) => val === false)
             const letterNote = getLet(note, scaleInfo.isSharp)
 

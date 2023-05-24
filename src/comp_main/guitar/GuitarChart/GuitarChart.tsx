@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Fretboard } from './Fretboard/Fretboard'
 import { FretboardControl } from './FretboardControl/FretboardControl'
 import './GuitarChart.scss'
+import { Legend } from './Legend/Legend'
 
 interface GuitarChartProps {
     scaleInfo: ScaleInfo
@@ -21,6 +22,7 @@ export function GuitarChart({ scaleInfo, highlightState, highlightCtrl }: Guitar
 
     return (
         <div className="section guitarchart-container">
+            <Legend scaleInfo={scaleInfo} />
             <Fretboard
                 scaleInfo={scaleInfo}
                 highlightState={highlightState}
