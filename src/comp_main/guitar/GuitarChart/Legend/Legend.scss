@@ -1,0 +1,26 @@
+.legend-container {
+    .row {
+        display: flex;
+        margin-bottom: 20px;
+        .note {
+            height: 35px;
+            width: 35px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            &.tonic {
+                background-color: var(--highlight-2);
+            }
+            &.significant {
+                background-color: var(--highlight-3);
+            }
+        }
+        .label {
+            width: 200px;
+            text-align: left;
+            margin-left: 20px;
+        }
+    }
+}

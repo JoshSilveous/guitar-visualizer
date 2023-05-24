@@ -14,11 +14,20 @@ export function Legend({ scaleInfo }: LegendProps) {
     console.log(scaleInfo.mode.significantNotes)
 
     return (
-        <div className="legend">
+        <div className="legend-container">
             <h2>Legend</h2>
-            {tonicNote}
-            <br />
-            {significantNote}
+            <div className="row">
+                <div className="note tonic">{tonicNote}</div>
+                <div className="label">Tonic note of scale</div>
+            </div>
+            {significantNote && (
+                <div className="row">
+                    <div className="note significant">{significantNote}</div>
+                    <div className="label">
+                        Significant note, emphasize while soloing to bring out the mode's unique sounds.
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
