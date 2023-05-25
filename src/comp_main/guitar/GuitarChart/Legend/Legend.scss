@@ -1,26 +1,35 @@
-.legend-container {
-    .row {
+.legend {
+    .legend-container {
         display: flex;
-        margin-bottom: 20px;
-        .note {
-            height: 35px;
-            width: 35px;
-            border-radius: 50px;
+        .row {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            &.tonic {
-                background-color: var(--highlight-2);
+            margin-bottom: 20px;
+
+            .note {
+                height: 35px;
+                width: 35px;
+                border-radius: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                user-select: none;
+
+                &.tonic {
+                    background-color: var(--highlight-2);
+                }
+                &.significant {
+                    background-color: var(--highlight-3);
+                }
+                .note-text {
+                    transform: translateY(-1px);
+                }
             }
-            &.significant {
-                background-color: var(--highlight-3);
+            .label {
+                width: 200px;
+                text-align: left;
+                margin-left: 20px;
             }
-        }
-        .label {
-            width: 200px;
-            text-align: left;
-            margin-left: 20px;
         }
     }
 }
