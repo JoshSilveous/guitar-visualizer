@@ -101,17 +101,25 @@ function App() {
             }
         })
     }
+    function resetHighlightState() {
+        setHighlightState(defaultHighlightState)
+    }
     const highlightCtrl = {
         highlightNote,
         unhighlightNote,
         highlightChord,
         unhighlightChord,
+        resetHighlightState,
     }
 
     return (
         <>
             <h1>Vite + React</h1>
-            <ScaleSelector scaleInfo={scaleInfo} setScaleSettings={setScaleSettings} />
+            <ScaleSelector
+                scaleInfo={scaleInfo}
+                setScaleSettings={setScaleSettings}
+                resetHighlightState={resetHighlightState}
+            />
             <ScaleInfo scaleInfo={scaleInfo} highlightState={highlightState} highlightCtrl={highlightCtrl} />
             <GuitarChart scaleInfo={scaleInfo} highlightState={highlightState} highlightCtrl={highlightCtrl} />
         </>

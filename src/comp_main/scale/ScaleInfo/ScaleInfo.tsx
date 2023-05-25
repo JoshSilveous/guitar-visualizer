@@ -6,12 +6,7 @@ import { ChordPatterns } from './ChordPatterns/ChordPatterns'
 interface ScaleInfoProps {
     scaleInfo: ScaleInfo
     highlightState: HighlightState
-    highlightCtrl: {
-        highlightNote: (noteIndex: number) => void
-        unhighlightNote: (noteIndex: number) => void
-        highlightChord: (chordIndex: number) => void
-        unhighlightChord: (chordIndex: number) => void
-    }
+    highlightCtrl: HighlightCtrl
 }
 /**
  * Displays information about the scale, specifically notes and chords.

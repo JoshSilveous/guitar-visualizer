@@ -4,12 +4,7 @@ import { generateString } from '../../guitar'
 interface FretboardProps {
     scaleInfo: ScaleInfo
     highlightState: HighlightState
-    highlightCtrl: {
-        highlightNote: (noteIndex: number) => void
-        unhighlightNote: (noteIndex: number) => void
-        highlightChord: (chordIndex: number) => void
-        unhighlightChord: (chordIndex: number) => void
-    }
+    highlightCtrl: HighlightCtrl
     guitarSettings: GuitarSettings
 }
 export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSettings }: FretboardProps) {

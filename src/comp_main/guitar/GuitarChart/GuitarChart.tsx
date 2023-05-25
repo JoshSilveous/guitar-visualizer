@@ -7,12 +7,7 @@ import { Legend } from './Legend/Legend'
 interface GuitarChartProps {
     scaleInfo: ScaleInfo
     highlightState: HighlightState
-    highlightCtrl: {
-        highlightNote: (noteIndex: number) => void
-        unhighlightNote: (noteIndex: number) => void
-        highlightChord: (chordIndex: number) => void
-        unhighlightChord: (chordIndex: number) => void
-    }
+    highlightCtrl: HighlightCtrl
 }
 export function GuitarChart({ scaleInfo, highlightState, highlightCtrl }: GuitarChartProps) {
     const [guitarSettings, setGuitarSettings] = useState<GuitarSettings>({
@@ -22,7 +17,7 @@ export function GuitarChart({ scaleInfo, highlightState, highlightCtrl }: Guitar
 
     return (
         <div className="section guitarchart-container">
-            <Legend scaleInfo={scaleInfo} />
+            <Legend scaleInfo={scaleInfo} highlightState={highlightState} />
             <Fretboard
                 scaleInfo={scaleInfo}
                 highlightState={highlightState}

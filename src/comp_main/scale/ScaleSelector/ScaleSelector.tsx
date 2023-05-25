@@ -5,12 +5,13 @@ import './ScaleSelector.scss'
 interface ScaleSelectorProps {
     scaleInfo: ScaleInfo
     setScaleSettings: React.Dispatch<React.SetStateAction<ScaleSettings>>
+    resetHighlightState: HighlightCtrl['resetHighlightState']
 }
 
 /**
  * Component which has options for the user to change the current `ScaleSettings` properties
  */
-export function ScaleSelector({ scaleInfo, setScaleSettings }: ScaleSelectorProps) {
+export function ScaleSelector({ scaleInfo, setScaleSettings, resetHighlightState }: ScaleSelectorProps) {
     const tonicOptions = scaleInfo.isSharp ? SCALE_LETTERS_SHARP : SCALE_LETTERS_FLAT
     const tonicOptionsDropdown = tonicOptions.map((note, index) => {
         return (
@@ -35,6 +36,7 @@ export function ScaleSelector({ scaleInfo, setScaleSettings }: ScaleSelectorProp
         }
 
         setScaleSettings((prev) => ({ ...prev, tonic: newTonic }))
+        resetHighlightState()
     }
 
     function handleModeChange(e: React.ChangeEvent) {
@@ -44,6 +46,7 @@ export function ScaleSelector({ scaleInfo, setScaleSettings }: ScaleSelectorProp
         }
 
         setScaleSettings((prev) => ({ ...prev, mode: newMode }))
+        resetHighlightState()
     }
 
     function handleSharpChange(e: React.ChangeEvent) {

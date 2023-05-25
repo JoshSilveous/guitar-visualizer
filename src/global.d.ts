@@ -25,4 +25,11 @@ export global {
             significant?: num[]
         }
     }
+    interface HighlightCtrl {
+        highlightNote: (noteIndex: number) => void
+        unhighlightNote: (noteIndex: number) => void
+        highlightChord: (chordIndex: number) => void
+        unhighlightChord: (chordIndex: number) => void
+        resetHighlightState: () => void
+    }
 }
