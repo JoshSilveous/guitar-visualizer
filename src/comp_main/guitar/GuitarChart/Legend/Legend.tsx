@@ -2,12 +2,11 @@ interface LegendProps {
     scaleInfo: ScaleInfo
     highlightState: HighlightState
 }
-export function Legend({ scaleInfo, highlightState }: LegendProps) {
+export function Legend({ scaleInfo }: LegendProps) {
     const tonicNote = scaleInfo.tonic.let
     const significantNote = scaleInfo.mode.significantNotes
         ? scaleInfo.scale.let[scaleInfo.mode.significantNotes[0]]
         : null
-    const isHighlightingChord = !highlightState.chords.every((val) => val === false)
 
     return (
         <div className="legend">
