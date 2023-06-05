@@ -114,7 +114,11 @@ function App() {
 
     return (
         <>
-            <h1>Vite + React</h1>
+            <h1>Fretboard Visualizer</h1>
+            <p>
+                This is a little app I made to exercise my design skills, and help hone in on a consistent project
+                structure. <br />I also use this to jam out sometimes.
+            </p>
             <ScaleSelector
                 scaleInfo={scaleInfo}
                 setScaleSettings={setScaleSettings}
