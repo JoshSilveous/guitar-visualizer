@@ -1,2 +1,2 @@
 BUGS
-    - When switching scales, the tonic highlights in the fretboard don't update correctly, and require a highlight state change to update
+    * When switching scales, the tonic highlights in the fretboard don't update correctly, and require a highlight state change to update

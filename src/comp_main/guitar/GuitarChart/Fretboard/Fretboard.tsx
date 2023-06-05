@@ -36,8 +36,19 @@ export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSett
                     titleText = `The note ${letterNote} is not in the scale of ${scaleInfo.tonic.let} ${scaleInfo.mode.name}, and should be avoided.`
                 }
             }
-            if (note === highlightState.special.tonic) {
+            if (
+                (noChordsAreHighlighted && note === scaleInfo.tonic.num) ||
+                (!noChordsAreHighlighted && note === highlightState.special.tonic)
+            ) {
                 className += ' focused-tonic'
+                console.log(
+                    'on note',
+                    getLet(note, scaleInfo.isSharp),
+                    'found match with',
+                    getLet(highlightState.special.tonic, scaleInfo.isSharp),
+                    'while scale tonic is',
+                    scaleInfo.tonic.let
+                )
             }
             if (isHighlighted) {
                 className += ' highlighted'
