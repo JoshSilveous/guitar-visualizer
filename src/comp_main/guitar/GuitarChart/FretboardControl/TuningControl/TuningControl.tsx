@@ -96,11 +96,9 @@ export function TuningControl({ guitarSettings, setGuitarSettings, scaleInfo }: 
         }
     }
     const tuningSelect = (
-        <select className="tuning-select" onChange={(e) => changeTuning(e.target.value)}>
+        <select className="tuning-select" onChange={(e) => changeTuning(e.target.value)} defaultValue="guitar-standard">
             <option value="custom">Custom</option>
-            <option value="guitar-standard" selected>
-                Guitar - Standard
-            </option>
+            <option value="guitar-standard">Guitar - Standard</option>
             <option value="guitar-opend">Guitar - Open D</option>
             <option value="bass-standard">Bass Guitar - Standard</option>
             <option value="ukelele-standard">Ukelele - Standard</option>

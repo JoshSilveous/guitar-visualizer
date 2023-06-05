@@ -5,10 +5,6 @@ interface StringLengthControlProps {
     setGuitarSettings: React.Dispatch<React.SetStateAction<GuitarSettings>>
 }
 export function StringLengthControl({ guitarSettings, setGuitarSettings }: StringLengthControlProps) {
-    if (false) {
-        console.log(guitarSettings, setGuitarSettings)
-    }
-
     const [usingCustomLength, setUsingCustomLength] = useState(false)
 
     function changeLength(length: string) {
@@ -55,11 +51,9 @@ export function StringLengthControl({ guitarSettings, setGuitarSettings }: Strin
     }
 
     const lengthSelect = (
-        <select className="length-select" onChange={(e) => changeLength(e.target.value)}>
+        <select className="length-select" onChange={(e) => changeLength(e.target.value)} defaultValue="12">
             <option value="custom">Custom</option>
-            <option value="12" selected>
-                12 frets
-            </option>
+            <option value="12">12 frets</option>
             <option value="18">18 frets</option>
             <option value="20">20 frets</option>
             <option value="22">22 frets</option>

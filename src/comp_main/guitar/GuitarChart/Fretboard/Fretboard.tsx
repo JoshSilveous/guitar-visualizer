@@ -8,17 +8,11 @@ interface FretboardProps {
     guitarSettings: GuitarSettings
 }
 export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSettings }: FretboardProps) {
-    if (false) {
-        console.log(scaleInfo, highlightCtrl, highlightState, guitarSettings)
-    }
-
-    console.log(highlightState.special)
-
     const strings = guitarSettings.stringOpens.map((openNote) => {
         return generateString(openNote, guitarSettings.stringLength + 1)
     })
 
-    const stringDisplay = strings.reverse().map((string) => {
+    const stringDisplay = strings.reverse().map((string, stringIndex) => {
         const noteDisplay = string.map((note, noteIndex) => {
             const isHighlighted = highlightState.notes[scaleInfo.scale.num.indexOf(note)]
             const isInScale = scaleInfo.scale.num.includes(note)
@@ -41,14 +35,6 @@ export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSett
                 (!noChordsAreHighlighted && note === highlightState.special.tonic)
             ) {
                 className += ' focused-tonic'
-                console.log(
-                    'on note',
-                    getLet(note, scaleInfo.isSharp),
-                    'found match with',
-                    getLet(highlightState.special.tonic, scaleInfo.isSharp),
-                    'while scale tonic is',
-                    scaleInfo.tonic.let
-                )
             }
             if (isHighlighted) {
                 className += ' highlighted'
@@ -69,7 +55,7 @@ export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSett
             }
 
             return (
-                <div className="note-container">
+                <div className="note-container" key={noteIndex}>
                     <div className={className} onClick={toggleHighlight} title={titleText}>
                         <div className="note-text">{letterNote}</div>
                     </div>
@@ -79,9 +65,9 @@ export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSett
             )
         })
         return (
-            <>
-                <div className="string">{noteDisplay}</div>
-            </>
+            <div className="string" key={stringIndex}>
+                {noteDisplay}
+            </div>
         )
     })
 
@@ -90,8 +76,12 @@ export function Fretboard({ scaleInfo, highlightState, highlightCtrl, guitarSett
         fretLabelsArray.push(i.toString())
     }
 
-    const fretLabelsDisplay = fretLabelsArray.map((item) => {
-        return <div className="label">{item}</div>
+    const fretLabelsDisplay = fretLabelsArray.map((item, index) => {
+        return (
+            <div className="label" key={index}>
+                {item}
+            </div>
+        )
     })
 
     return (

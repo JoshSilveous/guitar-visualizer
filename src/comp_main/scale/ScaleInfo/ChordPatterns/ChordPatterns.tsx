@@ -1,3 +1,4 @@
+import React from 'react'
 import { genRomanNum } from '../../scale'
 
 interface ChordPatternsProps {
@@ -36,7 +37,7 @@ export function ChordPatterns({
             }
 
             return (
-                <>
+                <React.Fragment key={chordNumIndex}>
                     {chordNumIndex !== 0 && <div className="divider"></div>}
                     <div
                         className={className}
@@ -53,11 +54,15 @@ export function ChordPatterns({
                         </div>
                         <div className="chord-type">{chordTypeLabel}</div>
                     </div>
-                </>
+                </React.Fragment>
             )
         })
 
-        return <div className="prog-row">{progRow}</div>
+        return (
+            <div className="prog-row" key={progIndex}>
+                {progRow}
+            </div>
+        )
     })
 
     return (

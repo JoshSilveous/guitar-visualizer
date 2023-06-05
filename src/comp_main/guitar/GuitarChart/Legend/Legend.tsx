@@ -3,17 +3,11 @@ interface LegendProps {
     highlightState: HighlightState
 }
 export function Legend({ scaleInfo, highlightState }: LegendProps) {
-    if (false) {
-        console.log(scaleInfo, highlightState)
-    }
-
     const tonicNote = scaleInfo.tonic.let
     const significantNote = scaleInfo.mode.significantNotes
         ? scaleInfo.scale.let[scaleInfo.mode.significantNotes[0]]
         : null
     const isHighlightingChord = !highlightState.chords.every((val) => val === false)
-
-    console.log(scaleInfo.mode.significantNotes)
 
     return (
         <div className="legend">
