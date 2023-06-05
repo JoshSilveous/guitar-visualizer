@@ -62,7 +62,7 @@ export function StringLengthControl({ guitarSettings, setGuitarSettings }: Strin
     )
 
     const cannotIncrementDown = guitarSettings.stringLength <= 8
-    const cannotIncrementUp = guitarSettings.stringLength >= 1000
+    const cannotIncrementUp = guitarSettings.stringLength >= 30
 
     function incrementUp() {
         if (!cannotIncrementUp) {
