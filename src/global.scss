@@ -21,3 +21,21 @@ select {
     outline: none;
     border: none;
 }
+
+.rotate-phone-warning {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    padding: 0px 100px;
+    box-sizing: border-box;
+    z-index: 100;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    @media (min-width: 470px) {
+        display: none;
+    }
+}

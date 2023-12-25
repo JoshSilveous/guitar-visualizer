@@ -119,6 +119,12 @@ function App() {
                 This is a little app I made to exercise my design skills, and help hone in on a consistent project
                 structure. <br />I also use this to jam out sometimes.
             </p>
+            <div className="rotate-phone-warning">
+                <p>
+                    Detected phone width is too small, please rotate your phone to a <strong>Landscape</strong>{' '}
+                    orientation.
+                </p>
+            </div>
             <ScaleSelector
                 scaleInfo={scaleInfo}
                 setScaleSettings={setScaleSettings}
