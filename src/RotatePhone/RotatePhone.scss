@@ -1,0 +1,41 @@
+.rotate-phone-warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    padding: 0px 100px;
+    box-sizing: border-box;
+    z-index: 100;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media (min-width: 470px) {
+        display: none;
+    }
+
+    .svg-container {
+        animation: rotation 6s infinite;
+        svg {
+            width: 200px;
+            height: 200px;
+        }
+    }
+}
+@keyframes rotation {
+    0%,
+    25% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-90deg);
+    }
+    95% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

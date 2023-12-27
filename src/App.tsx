@@ -5,6 +5,7 @@ import { ScaleSelector } from './comp_main/scale/ScaleSelector/ScaleSelector'
 import { genScaleInfo } from './comp_main/scale/genScaleInfo'
 import { ScaleInfo } from './comp_main/scale/ScaleInfo/ScaleInfo'
 import { GuitarChart } from './comp_main/guitar/GuitarChart/GuitarChart'
+import { RotatePhone } from './RotatePhone/RotatePhone'
 
 function App() {
     const [scaleSettings, setScaleSettings] = useState<ScaleSettings>({
@@ -114,17 +115,13 @@ function App() {
 
     return (
         <>
+            <RotatePhone />
             <h1>Fretboard Visualizer</h1>
             <p>
                 This is a little app I made to exercise my design skills, and help hone in on a consistent project
                 structure. <br />I also use this to jam out sometimes.
             </p>
-            <div className="rotate-phone-warning">
-                <p>
-                    Detected phone width is too small, please rotate your phone to a <strong>Landscape</strong>{' '}
-                    orientation.
-                </p>
-            </div>
+
             <ScaleSelector
                 scaleInfo={scaleInfo}
                 setScaleSettings={setScaleSettings}
